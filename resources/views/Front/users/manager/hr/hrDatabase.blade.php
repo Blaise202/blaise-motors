@@ -11,7 +11,7 @@
                         <p class="text-sm mb-0 text-capitaleze font-weight-bold">All Workers had</p>
                         <hr>
                         <h5 class="font-weight-bold mb-0">
-                            92
+                            {{ $totalUsers }}
                         </h5>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                         <p class="text-sm mb-0 text-capitaleze font-weight-bold">Current Workers</p>
                         <hr>
                         <h5 class="font-weight-bold mb-0">
-                            63
+                            {{ $currentWorkers }}
                         </h5>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <p class="text-sm mb-0 text-capitaleze font-weight-bold">Previous Workers</p>
                         <hr>
                         <h5 class="font-weight-bold mb-0">
-                            29
+                            {{ $previousWorkers }}
                         </h5>
                     </div>
                 </div>
@@ -47,18 +47,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>xxx</td>
-                        <td>head office</td>
-                        <td>+250788888</td>
-                        <td><img src="{{ asset('hr/assets/images/products/s11.jpg') }}" class="rounded"
-                                style="height: 90px; width: 90px;" alt="..." /></td>
-                        <td>123456</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success m-1">Edit</button>
-                            <button type="button" class="btn btn-outline-danger m-1">Remove</button>
-                        </td>
-                    </tr>
+                    @foreach ($user as $user)
+                        <tr>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->title }}</td>
+                            <td>{{ $user->phone }}</td>
+                            <td><img  src="usersImages/{{ $user->image}}" class="rounded"
+                                    style="height: 90px; width: 90px;" alt="..." /></td>
+                            <td>{{ $user->PIN }}</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-success m-1">Edit</button>
+                                <button type="button" class="btn btn-outline-danger m-1">Remove</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                        
                 </tbody>
             </table>
         </div>

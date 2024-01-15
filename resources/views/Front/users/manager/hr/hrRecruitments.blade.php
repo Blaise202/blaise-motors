@@ -7,46 +7,43 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <a class="nav-link nav-icon-hover" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link nav-icon-hover" data-bs-toggle="dropdown" >
                         <button type="button" class="btn btn-success m-1">Post a job</button>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up">
                         <div class="message-body">
-                            <form class="p-4" action="{{ url('postAJob') }}" method="post">
+                            <form class="p-4" action="{{ url('AddNewCar') }}" method="POST">
+                                @csrf
                                 <div class="row mt-5 inp-bright">
-                                    @csrf
                                     <div class="col-12 col-sm-8 py-2 fadeInLeft">
                                         <label>Job title</label>
-                                        <input style="color:#b5b0b2;" name="job_title" class="form-control">
+                                        <input placeholder="..." style="color:#b5b0b2;" name="job_title" class="form-control">
                                     </div>
-
                                     <div class="col-12 col-sm-6 py-2 wow fadeInRight ">
                                         <label>Job Description</label>
-                                        <textarea style="color:#b5b0b2;" class="form-control" style="height: 100px;"
+                                        <textarea placeholder="..." style="color:#b5b0b2;" class="form-control" style="height: 100px;"
                                             name="job_description"></textarea>
                                     </div>
                                     <div class="col-12 col-sm-6 py-2 wow fadeInRight ">
                                         <label>Qualifications</label>
-                                        <textarea style="color:#b5b0b2;" class="form-control" style="height: 100px;"
+                                        <textarea placeholder="..." style="color:#b5b0b2;" class="form-control" style="height: 100px;"
                                             name="qualification"></textarea>
                                     </div>
-
                                     <div class="col-12 col-sm-4 py-2 wow fadeInRight">
                                         <label>Location</label>
-                                        <input style="color:#b5b0b2;" class="form-control" name="location">
+                                        <input placeholder="..." style="color:#b5b0b2;" class="form-control" name="locations">
                                     </div>
                                     <div class="col-12 col-sm-4 py-2 wow fadeInRight">
                                         <label>Deadline</label>
-                                        <input style="color:#b5b0b2;" type="date" class="form-control" name="deadlines">
+                                        <input placeholder="..." style="color:#b5b0b2;" type="date" class="form-control" name="deadlines">
                                     </div>
                                     <div class="col-12 col-sm-4 py-2 wow fadeInRight">
                                         <label>Opportunities</label>
-                                        <input style="color:#b5b0b2;" type="text" name="opportunities" class="form-control">
+                                        <input placeholder="..." style="color:#b5b0b2;" type="text" name="opportunities" class="form-control">
                                     </div>
                                     <div class="col-12 col-sm-4 py-2 wow fadeInRight">
                                         <label>Contact</label>
-                                        <input style="color:#b5b0b2;" type="text" name="phone" class="form-control">
+                                        <input placeholder="..." style="color:#b5b0b2;" type="text" name="phone" class="form-control">
                                     </div>
                                     <div class="col-12 col-sm-2 py-2 wow fadeInRight">
                                         <div class="float-lg-right text-bold">
@@ -60,23 +57,23 @@
                     <hr>
                     <h4>Pending Job Posts</h4>
                     <div class="d-flex">
-                        @if($data)
-                            @foreach ($data as $data)    
+                        @if($posts)
+                            @foreach ($posts as $posts)    
                                 <div class="col-md-6 grid-margin stretch-card p-1">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">{{ $data->job_title }}</h4>
+                                            <h4 class="card-title">{{ $posts->job_title }}</h4>
                                             <p class="card-description">Job Location</p>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <address>
-                                                        <p style="width:100px" class="font-weight-bold">{{ $data->locations }}</p>
+                                                        <p style="width:100px" class="font-weight-bold">{{ $posts->locations }}</p>
                                                     </address>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <address class="text-primary">
                                                         <p class="font-weight-bold"><u>Deadlines</u> </p>
-                                                        <p class="mb-2"> {{ $data->deadlines }} </p>
+                                                        <p class="mb-2"> {{ $posts->deadlines }} </p>
                                                         <p class="font-weight-bold"> Web Address </p>
                                                         <p> www.Blaisemotors.com </p>
                                                     </address>
@@ -86,7 +83,7 @@
                                         <div class="card-body">
                                             <h4 class="card-title">Job Description</h4>
                                             </p>
-                                            <p class="lead">{{$data->job_description}}</p>
+                                            <p class="lead">{{$posts->job_description}}</p>
                                             <div class="d-flex float-end">
                                                 <div>
                                                     <button type="button" class="btn btn-danger float-left m-1">Remove
@@ -137,11 +134,11 @@
     </div>
 </div>
 
-<script src="{{ asset('hr/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+</body>
+<script src="{{ asset('hr/assets/libs/jquery/dist/jquery.min.js') }}"></script> 
 <script src="{{ asset('hr/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('hr/assets/js/sidebarmenu.js') }}"></script>
 <script src="{{ asset('hr/assets/js/app.min.js') }}"></script>
 <script src="{{ asset('hr/assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
-</body>
 
 </html>

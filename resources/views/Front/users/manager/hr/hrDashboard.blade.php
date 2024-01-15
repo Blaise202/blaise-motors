@@ -9,247 +9,100 @@
             <hr>
             <div class="row">
                 <h3>Head Office</h3>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href=""><img src="{{ asset('hr/assets/images/products/s4.jpg') }}" class="card-img-top rounded-0"
-                                    alt="..." /></a>
-                            <a href=""
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">Boat Headphone</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $500
-                                </h6>
-
+                @foreach ($director as $director)
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card overflow-hidden rounded-2">
+                            <div class="position-relative">
+                                <a href=""><img src="usersImages/{{ $director->image }}" class="card-img-top rounded-0" alt="." /></a>
+                            </div>
+                            <div class="card-body pt-3 p-4">
+                                <h6 class="fw-semibold fs-4">{{ $director->name }}</h6>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6 class="fw-semibold fs-4 mb-0">
+                                        $500
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
                 <hr>
                 <h3>Pepartment Heads</h3>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s5.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">MacBook Air Pro</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $650
-                                </h6>
-
+                @foreach ($manager as $manager)    
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card overflow-hidden rounded-2">
+                            <div class="position-relative">
+                                <a href=""><img src="usersImages/{{ $manager->image }}" class="card-img-top rounded-0" alt="." /></a>
+                            </div>
+                            <div class="card-body pt-3 p-4">
+                                <h6 class="fw-semibold fs-4">{{ $manager->name }}</h6>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6 class="fw-semibold fs-4 mb-0">
+                                        $400
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s7.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">Red Valvet Dress</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $150
-                                </h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s7.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">Red Valvet Dress</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $150
-                                </h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 <hr>
                 <h3>Branch Rulers</h3>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s7.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">Red Valvet Dress</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $150
-                                </h6>
-
+                @foreach ($seller as $seller)
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card overflow-hidden rounded-2">
+                            <div class="position-relative">
+                                <a href=" "><img src="usersImages/{{ $seller->image }}" class="card-img-top rounded-0" alt="..." /></a>
+                            </div>
+                            <div class="card-body pt-3 p-4">
+                                <h6 class="fw-semibold fs-4">{{ $seller->name }}</h6>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6 class="fw-semibold fs-4 mb-0">
+                                        $150
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s11.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">Cute Soft Teddybear</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    Principal
-                                </h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <h3>Head Office</h3>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s5.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">MacBook Air Pro</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $650
-                                </h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s7.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">Red Valvet Dress</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $150
-                                </h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <h3>Other Workers</h3>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s5.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">MacBook Air Pro</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $650
-                                </h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 <hr>
                 <h3>Distributers</h3>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s5.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">MacBook Air Pro</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $650
-                                </h6>
-
+                @foreach ($distributer as $distributer)
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card overflow-hidden rounded-2">
+                            <div class="position-relative">
+                                <a href=""><img src="usersImages/{{ $distributer->image }}" class="card-img-top rounded-0" alt="..." /></a>
+                            </div>
+                            <div class="card-body pt-3 p-4">
+                                <h6 class="fw-semibold fs-4">{{ $distributer->name }}</h6>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6 class="fw-semibold fs-4 mb-0">
+                                        $650
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card overflow-hidden rounded-2">
-                        <div class="position-relative">
-                            <a href="javascript:void(0)"><img src="./assets/images/products/s7.jpg"
-                                    class="card-img-top rounded-0" alt="..." /></a>
-                            <a href="javascript:void(0)"
-                                class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
-                                    class="ti ti-basket fs-4"></i></a>
-                        </div>
-                        <div class="card-body pt-3 p-4">
-                            <h6 class="fw-semibold fs-4">Red Valvet Dress</h6>
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="fw-semibold fs-4 mb-0">
-                                    $150
-                                </h6>
+                @endforeach
+                <hr>
+                <h3>Other Workers</h3>
+                @foreach ($tech as $tech)    
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card overflow-hidden rounded-2">
+                            <div class="position-relative">
+                                <a href=""><img src="usersImages/{{ $tech->image }}" class="card-img-top rounded-0" alt="..." /></a>
+                            </div>
+                            <div class="card-body pt-3 p-4">
+                                <h6 class="fw-semibold fs-4">{{ $tech->name }}</h6>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6 class="fw-semibold fs-4 mb-0">
+                                        $650
+                                    </h6>
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

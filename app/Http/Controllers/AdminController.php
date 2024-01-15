@@ -68,8 +68,8 @@ class AdminController extends Controller
     public function showRemoveCar()
     {
         $data = $this->getUser();
-        $data = Car::where('status', 'Visible')->get();
-        return view('Front.users.admin.RemoveCar', compact('data', 'data'));
+        $car = Car::where('status', 'Visible')->get();
+        return view('Front.users.admin.RemoveCar', compact('car', 'data'));
     }
 
     public function AddNew()
@@ -99,6 +99,7 @@ class AdminController extends Controller
         $cars->VIN = $request->VIN;
         $cars->price = $request->price;
         $cars->description = $request->overall_description;
+        $cars->number = $request->number;
     
         $cars->save();
     
@@ -114,8 +115,7 @@ class AdminController extends Controller
     }
 
     public function editCar($id)
-    {
-        
+    {     
         $data = $this->getUser();
         $car = Car::find($id);
         return view('Front.users.admin.editCar', compact('data', 'car'));

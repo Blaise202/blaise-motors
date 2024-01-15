@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Blaise Motors</title>
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="{{ asset('hr/assets/images/logos/favicon.png') }}"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ asset('hr/assets/css/styles.min.css') }}"
+        />
+    </head>
+
+    <body>
+        <div>
+            <a href="{{ url('/') }}" class="btn btn-success float-end">back</a>
+            <h4 class="text-center">Available Cars for sale</h4>
+        </div>
+        <br />
+        <div class="end-0">
+            <form class="d-flex float-end">
+                <label for="query">Search</label>
+                <input
+                    type="text"
+                    id="query"
+                    name="query"
+                    oninput="searchCars()"
+                    class="form-control"
+                    required
+                />
+            </form>
+            <br />
+            <a href="" class="float-end">clear</a>
+        </div>
+        <main>
+            <h2 id="results-heading"></h2>
+            <ul id="results-list"></ul>
+        </main>
+        <section id="featured-cars" class="featured-cars">
+            <div class="container">
+                <div class="section-header">
+                    <h2>featured cars</h2>
+                </div>
+                <div class="featured-cars-content">
+                    <div class="row">
+                        @foreach ($cars as $cars)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-featured-cars">
+                                <div class="featured-img-box">
+                                    <div class="featured-cars-img">
+                                        <img
+                                            src="carimages/{{ $cars->car_image }}"
+                                            alt="cars"
+                                        />
+                                    </div>
+                                    <div class="featured-model-info">
+                                        <p>
+                                            model: {{ $cars->car_model }}
+                                            <span class="featured-mi-span">
+                                                {{ $cars->mileage }} mi</span
+                                            >
+                                            {{ $cars->transmission }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="featured-cars-txt">
+                                    <a
+                                        class="nav-link nav-icon-hover"
+                                        href="javascript:void(0)"
+                                        id="drop2"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <a
+                                            href=""
+                                            class="border-0 bg-body-emphasis"
+                                        >
+                                            <h4>
+                                                {{ $cars->car_make }}
+                                                {{ $cars->body_type }}
+                                            </h4>
+                                        </a>
+                                    </a>
+                                    <div
+                                        class="col-sm-6 dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                        aria-labelledby="drop2"
+                                    >
+                                        <div class="message-body">
+                                            <form
+                                                class="p-4"
+                                                action=""
+                                                method="post"
+                                            >
+                                                <h4 class="text-center">
+                                                    Order this car
+                                                </h4>
+                                                <div
+                                                    class="row mt-5 inp-bright"
+                                                >
+                                                    <div
+                                                        class="col-12 col-sm-6 py-2 fadeInLeft"
+                                                    >
+                                                        <label>Names</label>
+                                                        <input
+                                                            style="
+                                                                color: #b5b0b2;
+                                                            "
+                                                            name="order_name"
+                                                            class="form-control"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="col-12 col-sm-6 py-2 wow fadeInRight"
+                                                    >
+                                                        <label>Phone</label>
+                                                        <input
+                                                            style="
+                                                                color: #b5b0b2;
+                                                            "
+                                                            type="orderNo"
+                                                            class="form-control"
+                                                            name=""
+                                                        />
+                                                    </div>
+
+                                                    <div
+                                                        class="col-12 col-sm-6 py-2 wow fadeInRight"
+                                                    >
+                                                        <label
+                                                            >Payment mode</label
+                                                        >
+                                                        <select
+                                                            style="
+                                                                color: #b5b0b2;
+                                                            "
+                                                            class="form-control"
+                                                            name="patment_mode"
+                                                        >
+                                                            <option value="">
+                                                                select
+                                                            </option>
+                                                            <option value="">
+                                                                Cash
+                                                            </option>
+                                                            <option value="">
+                                                                Bank
+                                                            </option>
+                                                            <option value="">
+                                                                Online
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div
+                                                        class="col-12 col-sm-2 py-2 wow fadeInRight"
+                                                    >
+                                                        <div
+                                                            class="float-lg-right text-bold"
+                                                        >
+                                                            <button
+                                                                type="button"
+                                                                class="btn btn-info m-1"
+                                                            >
+                                                                Forward
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <h3>{{ $cars->price }}</h3>
+                                    <p>
+                                        {{ $cars->description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <!--/.container-->
+        </section>
+
+        <script>
+            // Sample data array (replace with your actual data)
+            const carsData = [{
+                    name: '{{ $cars->body_type }}',
+                    description: 'Luxury Sedan',
+                    price: {{ $cars->price }}
+                },
+                {
+                    name: 'Chevrolet Camaro',
+                    description: 'Compact SUV',
+                    price: 66575
+                },
+                {
+                    name: 'Lamborghini',
+                    description: 'Sports Coupe',
+                    price: 125250
+                },
+                // ... add more cars as needed
+            ];
+
+            function searchCars() {
+                const resultsList = document.getElementById('results-list');
+                const resultsHeading = document.getElementById('results-heading');
+
+                // Clear previous results
+                resultsList.innerHTML = '';
+
+                const query = document.getElementById('query').value.toLowerCase();
+
+                // Filter data based on whether the typed characters are included in names
+                const filteredResults = carsData.filter(car =>
+                    car.name.toLowerCase().includes(query)
+                );
+
+                if (filteredResults.length === 0) {
+                    resultsHeading.textContent = 'No results found.';
+                } else {
+                    resultsHeading.textContent = 'Search Results:';
+                    // Display filtered results
+                    filteredResults.forEach(car => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `<h2>${car.name}</h2>
+                                                  <p>Description: ${car.description}</p>
+                                                  <p>Price: $${car.price}</p>`;
+                        resultsList.appendChild(listItem);
+                    });
+                }
+            }
+        </script>
+    </body>
+
+    <script src="../users/manager/hr/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</html>
+
+<section id="new-cars" class="new-cars">
+    <div class="container">
+        <div class="section-header">
+            <p>checkout <span>the</span> latest cars</p>
+            <h2>newest cars</h2>
+        </div>
+        <div class="new-cars-content">
+            <div class="owl-carousel owl-theme" id="new-cars-carousel">
+                <div class="new-cars-item">
+                    <div class="single-new-cars-item">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-12">
+                                <div class="new-cars-img">
+                                    <img
+                                        src="assets/images/new-cars-model/ncm1.png"
+                                        alt="img"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-12">
+                                <div class="new-cars-txt">
+                                    <h2>
+                                        <a href="#"
+                                            >chevrolet camaro
+                                            <span> ZL1 1LE</span></a
+                                        >
+                                    </h2>
+                                    <p>
+                                        The Chevrolet Camaro ZL1 1LE is the
+                                        fastest Camaro model. The Chevrolet
+                                        Camaro ZL1 1LE takes ZL1's engine and
+                                        combines it with reduced weight,
+                                        enhanced bodywork, and upgraded parts
+                                        like the supercharger and suspension.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-cars-item">
+                    <div class="single-new-cars-item">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-12">
+                                <div class="new-cars-img">
+                                    <img
+                                        src="assets/images/new-cars-model/ncm2.png"
+                                        alt="img"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-12">
+                                <div class="new-cars-txt">
+                                    <h2><a href="#">BMW series-3 wagon</a></h2>
+                                    <p>
+                                        Overview. BMW's only wagon for the
+                                        States comes in the form of the
+                                        competent, practical, and stylish
+                                        3-series Sports Wagon. Act fast, though,
+                                        as the 3-series wagon will disappear
+                                        from the U.S. market after the 2019
+                                        model year.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-cars-item">
+                    <div class="single-new-cars-item">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-12">
+                                <div class="new-cars-img">
+                                    <img
+                                        src="assets/images/new-cars-model/ncm3.png"
+                                        alt="img"
+                                    />
+                                </div>
+                                <!--/.new-cars-img-->
+                            </div>
+                            <div class="col-md-5 col-sm-12">
+                                <div class="new-cars-txt">
+                                    <h2>
+                                        <a href="#">ferrari 488 superfast</a>
+                                    </h2>
+                                    <p>
+                                        Yet Ferrari want everyone to believe the
+                                        812 is as fast as 488 Pista. Simply
+                                        because it sits higher in the model
+                                        range. Ferrari's Fiorano lap times are
+                                        selected by their marketing department.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

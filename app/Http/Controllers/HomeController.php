@@ -13,9 +13,13 @@ class HomeController extends Controller
 {
     public function index()
     {
+
+        $cars = Car::all();
         $brand = Inventory::where('type', 'brand')->get();
         $text = Inventory::where('type', 'Welcome text')->get();
-        return view("Front.home.index", compact('text', 'brand'));  
+        $newCar = Car::orderBy('id', 'desc')->limit(3)->get();
+
+        return view("Front.home.index", compact('text', 'brand', 'cars', 'newCar'));  
     }
 
     public function showSignUpForm()
@@ -35,11 +39,11 @@ class HomeController extends Controller
         {
             foreach($data as $id){
                 $id = $id->id;
+                $user = job_posts::find($id);
             }
-            $user = job_posts::find($id);
-            $createdAt = $user->created_at;
+            $now = now();
             $deadline = $user->deadlines;
-            $timeSpent = $createdAt->diffIndays($deadline);
+            $timeSpent = $now->diffIndays($deadline);
             return view('Front.home.Homejob', compact('data','timeSpent'));
         }
         else
@@ -50,7 +54,8 @@ class HomeController extends Controller
     
     public function BuyACar()
     {
-        return view('Front.home.BuyACar');
+        $cars = Car::all();
+        return view('Front.home.BuyACar' , compact('cars'));
     }
     public function Showcars()
     {
@@ -103,10 +108,20 @@ class HomeController extends Controller
     {
         $sub = new Subscription();
 
-        $sub-> name = $request->name;
+        $validate = $request->validate([
+            'name' => 'required|email|max:55'
+        ]);
 
-        $sub->save();
-
-        return redirect()->back();
+        if($validate)
+        {
+            $sub-> name = $request->name;
+    
+            $sub->save();
+    
+            return redirect()->back();
+        }
+        // else{
+        //     return redirect()->back()->with('email Not Saved');
+        // }
     }
 }

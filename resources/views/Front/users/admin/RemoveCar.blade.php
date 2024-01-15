@@ -15,7 +15,7 @@
                             <td>Image</td>
                             <td>Action</td>
                         </tr>
-                        @foreach($data as $car)
+                        @foreach($car as $car)
                         <tr>
                             <td>{{ $car->car_make }} {{ $car->body_type }}</td>
                             <td>{{ $car->price }}</td>

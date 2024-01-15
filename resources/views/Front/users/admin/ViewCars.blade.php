@@ -36,7 +36,7 @@
                                         <div class="featured-img-box">
                                             <div class="featured-cars-img">
                                                 <a href="{{ url('editCar', $cars->id) }}">
-                                                    <img src="carimages/{{ $cars->car_image }}" alt="cars" />
+                                                    <img style="width: 200px; height:100px"  src="carimages/{{ $cars->car_image }}" alt="cars" />
                                                 </a>
                                             </div>
                                         </div>

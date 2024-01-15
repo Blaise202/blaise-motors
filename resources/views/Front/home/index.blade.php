@@ -96,75 +96,28 @@
             </div>
             <div class="new-cars-content">
                 <div class="owl-carousel owl-theme" id="new-cars-carousel">
-                    <div class="new-cars-item">
-                        <div class="single-new-cars-item">
-                            <div class="row">
-                                <div class="col-md-7 col-sm-12">
-                                    <div class="new-cars-img">
-                                        <img src="assets/images/new-cars-model/ncm1.png" alt="img" />
+                    @foreach ($newCar as $newCar)    
+                        <div class="new-cars-item">
+                            <div class="single-new-cars-item">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-12">
+                                        <div class="new-cars-img">
+                                            <img src="carimages/{{ $newCar->car_image }}" alt="img" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-5 col-sm-12">
-                                    <div class="new-cars-txt">
-                                        <h2><a href="#">chevrolet camaro <span> ZL1 1LE</span></a></h2>
-                                        <p>
-                                            The Chevrolet Camaro ZL1 1LE is the fastest Camaro
-                                            model. The Chevrolet Camaro ZL1 1LE takes ZL1's engine
-                                            and combines it with reduced weight, enhanced bodywork,
-                                            and upgraded parts like the supercharger and suspension.
-                                        </p>
+                                    <div class="col-md-5 col-sm-12">
+                                        <div class="new-cars-txt">
+                                            <h2><a href="#">{{ $newCar->car_make }} <span> {{ $newCar->bodt_type }}</span></a></h2>
+                                            <p>
+                                                {{ $newCar->description }}
+                                            </p>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="new-cars-item">
-                        <div class="single-new-cars-item">
-                            <div class="row">
-                                <div class="col-md-7 col-sm-12">
-                                    <div class="new-cars-img">
-                                        <img src="assets/images/new-cars-model/ncm2.png" alt="img" />
-                                    </div>
-                                </div>
-                                <div class="col-md-5 col-sm-12">
-                                    <div class="new-cars-txt">
-                                        <h2><a href="#">BMW series-3 wagon</a></h2>
-                                        <p>
-                                            Overview. BMW's only wagon for the States comes in the
-                                            form of the competent, practical, and stylish 3-series
-                                            Sports Wagon. Act fast, though, as the 3-series wagon
-                                            will disappear from the U.S. market after the 2019 model
-                                            year.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="new-cars-item">
-                        <div class="single-new-cars-item">
-                            <div class="row">
-                                <div class="col-md-7 col-sm-12">
-                                    <div class="new-cars-img">
-                                        <img src="assets/images/new-cars-model/ncm3.png" alt="img" />
-                                    </div>
-                                    <!--/.new-cars-img-->
-                                </div>
-                                <div class="col-md-5 col-sm-12">
-                                    <div class="new-cars-txt">
-                                        <h2><a href="#">ferrari 488 superfast</a></h2>
-                                        <p>
-                                            Yet Ferrari want everyone to believe the 812 is as fast
-                                            as 488 Pista. Simply because it sits higher in the model
-                                            range. Ferrari's Fiorano lap times are selected by their
-                                            marketing department.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -178,208 +131,31 @@
             <button class="welcome-btn" onclick="window.location.href='{{ url('BuyACar') }}'">Buy One</button>
             <div class="featured-cars-content">
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-featured-cars">
-                            <div class="featured-img-box">
-                                <div class="featured-cars-img">
-                                    <img src="assets/images/featured-cars/fc1.png" alt="cars">
+                    @foreach ($cars as $car)    
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-featured-cars">
+                                <div class="featured-img-box">
+                                    <div class="featured-cars-img">
+                                        <img src="carimages/{{ $car->car_image }}" alt="cars">
+                                    </div>
+                                    <div class="featured-model-info">
+                                        <p>
+                                            model: {{ $car->car_model }}
+                                            <span class="featured-mi-span"> {{ $car->mileage }} mi</span>
+                                            {{ $car->transmission }}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="featured-model-info">
+                                <div class="featured-cars-txt">
+                                    <h2><a>{{ $car->car_make }} {{ $car->body_type }}</a></h2>
+                                    <h3>{{ $car->price }}</h3>
                                     <p>
-                                        model: 2017
-                                        <span class="featured-mi-span"> 3100 mi</span>
-                                        <span class="featured-hp-span"> 240HP</span>
-                                        automatic
+                                        {{ $car->description }}
                                     </p>
                                 </div>
                             </div>
-                            <div class="featured-cars-txt">
-                                <h2><a>BMW 6-series gran coupe</a></h2>
-                                <h3>$89,395</h3>
-                                <p>
-                                    Luxury meets performance in a sleek four-door design,
-                                    boasting advanced tech and dynamic driving for enthusiasts.
-                                </p>
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-featured-cars">
-                            <div class="featured-img-box">
-                                <div class="featured-cars-img">
-                                    <img src="assets/images/featured-cars/fc2.png" alt="cars">
-                                </div>
-                                <div class="featured-model-info">
-                                    <p>
-                                        model: 2017
-                                        <span class="featured-mi-span"> 3100 mi</span>
-                                        <span class="featured-hp-span"> 240HP</span>
-                                        automatic
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="featured-cars-txt">
-                                <h2><a>chevrolet camaro <span>wmv20</span></a></h2>
-                                <h3>$66,575</h3>
-                                <p>
-                                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-featured-cars">
-                            <div class="featured-img-box">
-                                <div class="featured-cars-img">
-                                    <img src="assets/images/featured-cars/fc3.png" alt="cars">
-                                </div>
-                                <div class="featured-model-info">
-                                    <p>
-                                        model: 2017
-                                        <span class="featured-mi-span"> 3100 mi</span>
-                                        <span class="featured-hp-span"> 240HP</span>
-                                        automatic
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="featured-cars-txt">
-                                <h2><a>lamborghini <span>v520</span></a></h2>
-                                <h3>$125,250</h3>
-                                <p>
-                                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-featured-cars">
-                            <div class="featured-img-box">
-                                <div class="featured-cars-img">
-                                    <img src="assets/images/featured-cars/fc4.png" alt="cars">
-                                </div>
-                                <div class="featured-model-info">
-                                    <p>
-                                        model: 2017
-                                        <span class="featured-mi-span"> 3100 mi</span>
-                                        <span class="featured-hp-span"> 240HP</span>
-                                        automatic
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="featured-cars-txt">
-                                <h2><a>audi <span> a3</span> sedan</a></h2>
-                                <h3>$95,500</h3>
-                                <p>
-                                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-featured-cars">
-                            <div class="featured-img-box">
-                                <div class="featured-cars-img">
-                                    <img src="assets/images/featured-cars/fc4.png" alt="cars">
-                                </div>
-                                <div class="featured-model-info">
-                                    <p>
-                                        model: 2017
-                                        <span class="featured-mi-span"> 3100 mi</span>
-                                        <span class="featured-hp-span"> 240HP</span>
-                                        automatic
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="featured-cars-txt">
-                                <h2><a>infiniti <span>z5</span></a></h2>
-                                <h3>$36,850</h3>
-                                <p>
-                                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-featured-cars">
-                            <div class="featured-img-box">
-                                <div class="featured-cars-img">
-                                    <img src="assets/images/featured-cars/fc5.png" alt="cars">
-                                </div>
-                                <div class="featured-model-info">
-                                    <p>
-                                        model: 2017
-                                        <span class="featured-mi-span"> 3100 mi</span>
-                                        <span class="featured-hp-span"> 240HP</span>
-                                        automatic
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="featured-cars-txt">
-                                <h2><a>porsche <span>718</span> cayman</a></h2>
-                                <h3>$48,500</h3>
-                                <p>
-                                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-featured-cars">
-                            <div class="featured-img-box">
-                                <div class="featured-cars-img">
-                                    <img src="assets/images/featured-cars/fc7.png" alt="cars">
-                                </div>
-                                <div class="featured-model-info">
-                                    <p>
-                                        model: 2017
-                                        <span class="featured-mi-span"> 3100 mi</span>
-                                        <span class="featured-hp-span"> 240HP</span>
-                                        automatic
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="featured-cars-txt">
-                                <h2><a><span>bmw 8-</span>series coupe</a></h2>
-                                <h3>$56,000</h3>
-                                <p>
-                                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-featured-cars">
-                            <div class="featured-img-box">
-                                <div class="featured-cars-img">
-                                    <img src="assets/images/featured-cars/fc8.png" alt="cars">
-                                </div>
-                                <div class="featured-model-info">
-                                    <p>
-                                        model: 2017
-                                        <span class="featured-mi-span"> 3100 mi</span>
-                                        <span class="featured-hp-span"> 240HP</span>
-                                        automatic
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="featured-cars-txt">
-                                <h2><a>BMW <span> x</span>series-6</a></h2>
-                                <h3>$75,800</h3>
-                                <p>
-                                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                    adipisci velit, sed quia non.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -484,8 +260,7 @@
                                 <a href="{{ url('/') }}">BlaiseMotors</a>
                             </div>
                             <p>
-                                Ased do eiusm tempor incidi ut labore et dolore magnaian aliqua. Ut enim ad minim
-                                veniam.
+                                we are dedicated to providing better services to our clients and make all of you comfortable to contributing to our day-to-day development.
                             </p>
                             <div class="footer-contact">
                                 <p>info@blaisemotors.com</p>
@@ -585,6 +360,7 @@
                             </div>
                             <div class="hm-foot-email">
                                 <form action="{{ url('saveEmail') }}" method="POST">
+                                    @csrf
                                     <div class="foot-email-box">
                                         <label for="name"></label>
                                         <input name="name" id="email" type="email" class="form-control"

@@ -35,7 +35,7 @@
                                     <p class="font-weight-bold"><u>Deadlines</u> </p>
                                     <div class="d-flex">
                                         <p class="mb-2">{{ $data->deadlines }} /</p>
-                                        <p class="text-danger">{{ $timeSpent }} days left to apply</p> 
+                                        <p class="text-danger">{{ $timeSpent }} days remain to apply</p> 
                                     </div>
                                     <p class="font-weight-bold"> Web Address </p>
                                     <p> www.Blaisemotors.com </p>
@@ -76,9 +76,8 @@
                                             <div class="col-12 col-sm-6 py-2 wow fadeInRight">
                                                 <label>Qualification met</label>
                                                 <select style="color:#b5b0b2;" type="text" name="" class="form-control">
-                                                    <option value="">Bachelor's degree in accounting.</option>
-                                                    <option value="">Atleast one year of experience.</option>
-                                                    <option value="">Recognised and legal certificate of finance.</option>
+                                                    <option value=""></option>
+                                                    <option>{{ $data->qualification }}</option>
                                                 </select>
                                             </div>
                                             <div class="col-12 col-sm-6 py-2 wow fadeInRight">

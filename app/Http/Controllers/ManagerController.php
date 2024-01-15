@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Traits\SharedFunctionsTrait;
 use App\Models\job_posts;
 use App\Models\users;
 use Illuminate\Http\Request;
@@ -9,16 +10,28 @@ use Illuminate\Support\Carbon;
 
 class ManagerController extends Controller
 {
+    use SharedFunctionsTrait;
 
     public function hrDashboard()
     {
-        return view('Front.users.manager.hr.hrDashboard');
+        $data = $this->getUser();
+        $director = users::where('rank', '2')->get();
+        $manager = users::where('rank', '3')->get();
+        $seller = users::where('rank', '4')->get();
+        $distributer = users::where('rank', '5')->get();
+        $tech = users::where('rank', '6')->get();
+
+        return view('Front.users.manager.hr.hrDashboard', compact('director','manager','seller','distributer', 'tech', 'data'));
     }
     //functions needed by hr start
     Public function ShowWorkers()
     {
-        $data = users::all();
-        return view('Front.users.manager.hr.hrDatabase' ,compact('data'));
+        $totalUsers = Users::count();
+        $currentWorkers = users::where('status', 'active')->count();
+        $previousWorkers = users::where('status', 'terminate')->count();
+        $data = $this->getUser();
+        $user = users::all();
+        return view('Front.users.manager.hr.hrDatabase' ,compact('data', 'user','totalUsers','currentWorkers','previousWorkers'));
     }
 
    
@@ -64,11 +77,6 @@ class ManagerController extends Controller
         return redirect()->back()->with('message', 'worker status set to fired');
     }
 
-    public function getUser($id)
-    {
-        $userImage = users::find($id);
-        return view('include.navbar', compact('userImage'));
-    }
 
     public function WorkersCounts()
     {
@@ -85,24 +93,21 @@ class ManagerController extends Controller
         $post = new job_posts();
 
         $validate = $request -> validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'qualifications' => 'required|string',
-            'location' => 'required|string',
+            'job_title' => 'required|string',
+            'job_description' => 'required|string',
+            'qualification' => 'required|string',
+            'locations' => 'required|string',
             'deadline' => 'required|date',
-            'contact' => 'required|string'
+            'phone' => 'required|string'
         ]);
 
-        if(!$validate){
-            return redirect()->back()->with('please fill in all parts');
-        }
-        else{
+        if($validate){
             $post->title = $request->title;
-            $post->description = $request->description;
+            $post->job_description = $request->job_description;
             $post->qualification = $request->qualification;
-            $post->location = $request->location;
-            $post->deadline = $request->deadline;
-            $post->contact = $request->contact;
+            $post->locations = $request->locations;
+            $post->deadlines = $request->deadlines;
+            $post->phone = $request->phone;
             $post->benefits = $request->benefits;
             $post->opportunities = $request->opportunities;
     
@@ -110,6 +115,9 @@ class ManagerController extends Controller
     
             return redirect()->back()->with('new post added successifully');
         }
+        // else{
+        //     return redirect()->back()->with('please fill in all parts');
+        // }
     }
 
     public function getjob($id)
@@ -135,19 +143,20 @@ class ManagerController extends Controller
 
     public function hrRecruitments()
     {
-        $data = job_posts::all();
-        if($data)
+        $data =$this->getUser();
+        $posts = job_posts::all();
+        if($posts)
         {
-            foreach($data as $id){
+            foreach($posts as $id){
                 $id = $id->id;
+                $user = job_posts::find($id);
+                $createdAt = $user->created_at;
+                $deadline = $user->deadlines;
+                $timeSpent = $createdAt->diffIndays($deadline);
+                return view('Front.users.manager.hr.hrRecruitments', compact('data', 'timeSpent','posts'));
             }
-            $user = job_posts::find($id);
-            $createdAt = $user->created_at;
-            $deadline = $user->deadlines;
-            $timeSpent = $createdAt->diffIndays($deadline);
-            return view('Front.users.manager.hr.hrRecruitments', compact('data', 'timeSpent'));
         }
-        return view('Front.users.manager.hr.hrRecruitments')->with('no job posts yet');
+        return view('Front.users.manager.hr.hrRecruitments', compact('data','posts'))->with('no job posts yet');
     }
     
     
