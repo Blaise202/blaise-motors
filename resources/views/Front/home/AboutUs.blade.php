@@ -66,7 +66,7 @@ p {
                 <br>
                 <h1>Watch a video instead</h1>
                 <br>
-                <iframe width="560" height="315" src="vid.mp4" frameborder="0" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="{{asset('vid.mp4')  }}" frameborder="0" allowfullscreen></iframe>
 
             </div>
 </body>
