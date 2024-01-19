@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('mileage'); // corrected typo in column name
             $table->string('VIN');
             $table->string('price');
-            $table->string('year_of_manufacturer');
             $table->string('car_image');
             $table->text('description'); // changed to 'text' for longer description
             $table->timestamps();

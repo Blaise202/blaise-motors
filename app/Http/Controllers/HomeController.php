@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Traits\SharedFunctionsTrait;
 use App\Models\Car;
 use App\Models\Comment;
 use App\Models\Inventory;
 use App\Models\job_posts;
 use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    
+    use SharedFunctionsTrait;
+
     public function index()
     {
 
@@ -35,7 +40,8 @@ class HomeController extends Controller
     public function homeJob()
     {
         $data = job_posts::all();
-        if ($data)
+        $count = $data->count();
+        if ($count > 0)
         {
             foreach($data as $id){
                 $id = $id->id;
@@ -48,7 +54,7 @@ class HomeController extends Controller
         }
         else
         {
-            return view('Front.home.Homejob')->with('no job posts yet');
+            return view('Front.home.Homejob', compact('data'))->with('no job posts yet');
         }
     }
     
@@ -123,5 +129,11 @@ class HomeController extends Controller
         // else{
         //     return redirect()->back()->with('email Not Saved');
         // }
+    }
+
+    public function showUserdashboard(){
+        $data = $this->getUser();
+        $cars = Car::all();
+        return view('Front.users.udashboard', compact('data', 'cars'));
     }
 }

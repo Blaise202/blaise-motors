@@ -30,7 +30,7 @@ class ManagerController extends Controller
         $currentWorkers = users::where('status', 'active')->count();
         $previousWorkers = users::where('status', 'terminate')->count();
         $data = $this->getUser();
-        $user = users::all();
+        $user = users::all(); 
         return view('Front.users.manager.hr.hrDatabase' ,compact('data', 'user','totalUsers','currentWorkers','previousWorkers'));
     }
 

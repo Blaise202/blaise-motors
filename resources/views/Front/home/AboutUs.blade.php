@@ -28,7 +28,7 @@ p {
 </head>
 
 <body>
-    <a href="index.php" class="float-end">
+    <a href="{{ url('') }}" class="float-end">
         < </a>
             <div class="container">
                 <h1>About Us - Your Car Buying Partner</h1>
@@ -69,6 +69,7 @@ p {
                 <iframe width="560" height="315" src="{{asset('vid.mp4')  }}" frameborder="0" allowfullscreen></iframe>
 
             </div>
+@include('Front.home.include.header')
 </body>
 
 </html>

@@ -46,7 +46,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                {{-- <tbody>
                     @foreach ($user as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
@@ -56,13 +56,12 @@
                                     style="height: 90px; width: 90px;" alt="..." /></td>
                             <td>{{ $user->PIN }}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-success m-1">Edit</button>
                                 <button type="button" class="btn btn-outline-danger m-1">Remove</button>
                             </td>
                         </tr>
                     @endforeach
                         
-                </tbody>
+                </tbody> --}}
             </table>
         </div>
     </div>

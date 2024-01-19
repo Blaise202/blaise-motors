@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->string('order_name');
                 $table->string('orderNo');
                 $table->string('payment_mode');
-                $table->string('payment_status');
+                $table->string('payment_status')->default('unsettled');
                 $table->timestamps();
             });
         }

@@ -71,6 +71,8 @@ Route::middleware(['auth.user'])->group(function(){
     Route::post('/saveWelcomeText', [AdminController::class, 'saveWelcomeText']);
 
     Route::post('/saveNewbrand', [AdminController::class, 'saveNewbrand']);
+
+    Route::get('/udashboard', [HomeController::class, 'showUserdashboard']);
 });
 
 
