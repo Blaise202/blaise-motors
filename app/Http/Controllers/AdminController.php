@@ -173,6 +173,7 @@ class AdminController extends Controller
     {
         $brand = new Inventory();
 
+        $brand->name = $request->name;
         $brand->type = $request->type;
         $image = $request->file('image');
         $filename = time() . '.' . $image->getClientOriginalExtension();

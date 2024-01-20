@@ -46,7 +46,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                {{-- <tbody>
+                <tbody>
                     @foreach ($user as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
@@ -61,7 +61,7 @@
                         </tr>
                     @endforeach
                         
-                </tbody> --}}
+                </tbody>
             </table>
         </div>
     </div>

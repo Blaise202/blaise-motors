@@ -114,6 +114,10 @@
                                         <label>New Brand</label>
                                         <input type="file" name="image" style="color:#b5b0b2;" class="form-control" required />
                                     </div>
+                                    <div class="col-12 col-sm-12 py-2 wow fadeInRight ">
+                                        <label>Brand name</label>
+                                        <input type="text" name="name" style="color:#b5b0b2;" class="form-control" required />
+                                    </div>
                                     <div class="col-12 col-sm-12 py-2 wow fadeInRight">
                                         <label>Type</label>
                                         <select style="color:#b5b0b2;" class="form-control" name="type" required>

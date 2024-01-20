@@ -73,6 +73,27 @@ Route::middleware(['auth.user'])->group(function(){
     Route::post('/saveNewbrand', [AdminController::class, 'saveNewbrand']);
 
     Route::get('/udashboard', [HomeController::class, 'showUserdashboard']);
+
+    Route::get('/searchCar', [HomeController::class, 'searchCar']);
+
+    Route::get('/showbmw', [HomeController::class, 'showbmw']);
+
+    Route::get('/showferrari', [HomeController::class, 'showferrari']);
+
+    Route::get('/showaudi', [HomeController::class, 'showaudi']);
+
+    Route::get('/showchevrolet', [HomeController::class, 'showchevrolet']);
+
+    Route::get('/showhonda', [HomeController::class, 'showhonda']);
+
+    Route::get('/showacer', [HomeController::class, 'showacer']);
+    
+    Route::get('/showrambolghini', [HomeController::class, 'showrambolghini']);
+    
+    Route::get('/showhsbc', [HomeController::class, 'showhsbc']);
+    Route::get('/showtoyota', [HomeController::class, 'showtoyota']);
+    Route::get('/showdish', [HomeController::class, 'showdish']);
+    Route::get('/showhyundai', [HomeController::class, 'showhyundai']);
 });
 
 

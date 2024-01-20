@@ -136,4 +136,110 @@ class HomeController extends Controller
         $cars = Car::all();
         return view('Front.users.udashboard', compact('data', 'cars'));
     }
+
+    public function getcarMake($text){
+        $car = Car::where('car_make', $text);
+        return $car;
+    }
+    public function getcarModel($text){
+        $car = Car::where('car_model', $text);
+        return $car;
+    }
+    public function getcarMileage($text){
+        $car = Car::where('car_milleage', $text);
+        return $car;
+    }
+
+    
+
+    public function searchCar(Request $request)
+    {
+        $make = $request->input('make');
+        $model = $request->input('model');
+        $mileage = $request->input('mileage');
+
+        $query = Car::query();
+
+        if ($make) {
+            $query->where('car_make', 'like', "%$make%");
+        }
+
+        if ($model) {
+            $query->where('car_model', 'like', "%$model%");
+        }
+
+        if ($mileage) {
+            $query->where('car_mileage', 'like', "%$mileage%");
+        }
+
+        $results = $query->get();
+
+        if ($results->isEmpty()) {
+            return redirect()->back()->with(['error' => 'No results found']);
+        }
+
+        return redirect()->back()->with(['results' => $results, 'make' => $make, 'model' => $model, 'mileage' => $mileage]);
+    }
+
+    public function showBmw()
+    {
+        $Cars = Car::where('car_make', 'bmw')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+
+    public function showferrari()
+    {
+        $Cars = Car::where('car_make', 'ferari')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+
+    public function showaudi()
+    {
+        $Cars = Car::where('car_make', 'audi')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+    public function showacer()
+    {
+        $Cars = Car::where('car_make', 'acer')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+    public function showdish()
+    {
+        $Cars = Car::where('car_make', 'dish')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+    public function showhonda()
+    {
+        $Cars = Car::where('car_make', 'honda')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+    public function showhyundai()
+    {
+        $Cars = Car::where('car_make', 'hyundai')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+    public function showtoyota()
+    {
+        $Cars = Car::where('car_make', 'toyota')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+    public function showchevrolet()
+    {
+        $Cars = Car::where('car_make', 'chevrolet')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+    public function showhsbc()
+    {
+        $Cars = Car::where('car_make', 'hsbc')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+
+    public function showrambolghini()
+    {
+        $Cars = Car::where('car_make', 'rambolghini')->get();
+        return redirect()->back()->with('Cars', $Cars);
+    }
+
+    
+
 }

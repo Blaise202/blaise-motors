@@ -35,13 +35,112 @@
             </div>
         </div>
     </section>
+    <hr>
+    <Section class="pt-5">
+        <div class="container">
+            <div class="bg-light">
+                <div class="p-3">
+                    <div class="row">
+                        <div class="width-30 float-left d-flex">
+                            <p>Get your desired car</p>
+                        </div>
+                    </div>
+                    <table class="table table-primary">
+                        <thead>
+                            <tr>
+                                <td><input class="form-control" name="make" id="" placeholder="Car make"></td>
+                                <td><input class="form-control" name="model" id="" placeholder="car model"/></td>
+                                <td><input class="form-control" name="milleage" id="" placeholder="Car Mileage"></td>
+                                <td><a href="{{ url('searchCar') }}" class="btn btn-secondary">Search</a></td>
+                            </tr>
+                        </thead>
+                    </table>
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @elseif(session('results'))
+                        <h2>Search Results:</h2>
+                        <ul>
+                            @foreach(session('results') as $result)
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="single-featured-cars">
+                                    <div class="featured-img-box">
+                                        <div class="featured-cars-img">
+                                            <img src="carimages/{{ $result->car_image }}" alt="cars">
+                                        </div>
+                                        <div class="featured-model-info">
+                                            <p>
+                                                model: {{ $result->car_model }}
+                                                <span class="featured-mi-span"> {{ $result->mileage }} mi</span>
+                                                {{ $result->transmission }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="featured-cars-txt">
+                                        <h2><a>{{ $result->car_make }} {{ $result->body_type }}</a></h2>
+                                        <h3>$ {{ $result->price }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </Section>
     <section id="featured-cars" class="featured-cars">
         <div class="container">
-            <div class="section-header">
-                <p>checkout <span>the</span> featured cars</p>
-                <h2>featured cars</h2>
+            <p><h2>Popular Categories</h2></p>
+            <div class="d-flex full-width pl-4 p-3 end-10">
+                <a href="{{ url('showacer') }}" class="btn btn-outline-danger border m-1"> acer</a>
+                <a href="{{ url('showdish') }}" class="btn btn-outline-danger border m-1">dish</a>
+                <a href="{{ url('showrambolghini') }}" class="btn btn-outline-danger border m-1">rambolghini</a>
+                <a href="{{ url('showhonda') }}" class="btn btn-outline-danger border m-1">honda</a>
+                <a href="{{ url('showhyundai') }}" class="btn btn-outline-danger border m-1">hyundai</a>
+                <a href="{{ url('showferrari') }}" class="btn btn-outline-danger border m-1">ferrari</a>
+                <a href="{{ url('showbmw') }}" class="btn btn-outline-danger border m-1">bmw</a>
+                <a href="{{ url('showtoyota') }}" class="btn btn-outline-danger border m-1">toyota</a>
+                <a href="{{ url('showchevrolet') }}" class="btn btn-outline-danger border m-1">chevrolet</a>
+                <a href="{{ url('showhsbc') }}" class="btn btn-outline-danger border m-1">HSBC</a>
+                <a href="{{ url('showaudi') }}" class="btn btn-outline-danger border m-1">AUDI</a>
             </div>
-            <button class="welcome-btn" onclick="window.location.href='{{ url('BuyACar') }}'">Buy One</button>
+            @if(session('Cars'))
+                <div class="alert alert-success">
+                    @foreach(session('Cars') as $result)
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="single-featured-cars">
+                                    <div class="featured-img-box">
+                                        <div class="featured-cars-img">
+                                            <img src="carimages/{{ $result->car_image }}" alt="cars">
+                                        </div>
+                                        <div class="featured-model-info">
+                                            <p>
+                                                model: {{ $result->car_model }}
+                                                <span class="featured-mi-span"> {{ $result->mileage }} mi</span>
+                                                {{ $result->transmission }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="featured-cars-txt">
+                                        <h2><a>{{ $result->car_make }} {{ $result->body_type }}</a></h2>
+                                        <h3>$ {{ $result->price }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                </div>
+            @else
+                <div class="alert alert-success">
+                    <h3>no cars of this make we have</h3>
+                </div>
+            @endif
+        </div>
+    </section>
+    <section id="featured-cars" class="featured-cars">
+        <div class="container">
+            <p><h2>Available cars</h2></p>
             <div class="featured-cars-content">
                 <div class="row">
                     @foreach ($cars as $car)    
@@ -61,15 +160,22 @@
                                 </div>
                                 <div class="featured-cars-txt">
                                     <h2><a>{{ $car->car_make }} {{ $car->body_type }}</a></h2>
-                                    <h3>{{ $car->price }}</h3>
-                                    <p>
-                                        {{ $car->description }}
-                                    </p>
+                                    <h3>$ {{ $car->price }}</h3>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
+            </div>
+        </div>
+        <!--/.container-->
+
+    </section>
+    <section id="featured-cars" class="featured-cars">
+        <div class="container">
+            <p><h2>View your garage </h2></p>
+            <div class="featured-cars-content">
+                
             </div>
         </div>
         <!--/.container-->
